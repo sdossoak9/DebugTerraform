@@ -25,6 +25,7 @@ EOF
 
 
 resource "aws_lambda_function" "Oak9SampleFunction" {
+   # oak9: aws_lambda_function.memory_size is not configured
    function_name = var.lambdaFunctionName
 
    # A S3 bucket, where we could deploy the builds
