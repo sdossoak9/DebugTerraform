@@ -1,10 +1,3 @@
-module "ov-cloudfront" {
-  source = "../modules/Cloudfront"
-  
-  cf_s3Bucket = "ov-test"
-  environment = "dev-test"
-}
-
 resource "aws_vpc" "default" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
@@ -23,6 +16,14 @@ resource "aws_subnet" "tf_test_subnet" {
     Name = "tf_test_subnet"
   }
 }
+
+module "ov-cloudfront" {
+  source = "../modules/Cloudfront"
+  
+  cf_s3Bucket = "ov-test"
+  environment = "dev-test"
+}
+
 
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.default.id
