@@ -25,6 +25,7 @@ EOF
 
 
 resource "aws_lambda_function" "Oak9SampleFunction" {
+   # oak9: aws_lambda_function.kms_key_arn is not set to use customer managed keys for encryption
    # oak9: lambda.function.reserved_concurrent_executions is not configured
    function_name = var.lambdaFunctionName
 
