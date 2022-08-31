@@ -1,0 +1,420 @@
+{
+  "designGaps": [
+    {
+      "id": "Oak9.Req.AA.1",
+      "name": "Logging",
+      "source": "Aws",
+      "resourceName": "Oak9SampleAPIGateway_deployment",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "aws_api_gateway_account.cloudwatch_role_arn is not configured",
+          "severity": "Moderate"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.AE.2",
+      "name": "Session Limits",
+      "source": "Aws",
+      "resourceName": "Oak9SampleAPIGateway_deployment",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "aws_api_gateway_integration.timeout_milliseconds is not configured",
+          "severity": "Moderate"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.AE.11",
+      "name": "Access Policy Enforcement",
+      "source": "Aws",
+      "resourceName": "Oak9SampleAPIGateway_deployment",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "aws_api_gateway_method.authorization is not configured",
+          "severity": "Critical"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.AE.14",
+      "name": "Access Control Policy",
+      "source": "Aws",
+      "resourceName": "Oak9SampleAPIGateway_deployment",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "aws_api_gateway_rest_api.policy is not configured",
+          "severity": "Critical"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.AI.1",
+      "name": "Asset Inventory",
+      "source": "Aws",
+      "resourceName": "Oak9SampleAPIGateway_deployment",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "aws_api_gateway_rest_api.tags is not configured",
+          "severity": "Moderate"
+        },
+        {
+          "errorMessage": "aws_api_gateway_usage_plan.tags is not configured",
+          "severity": "Moderate"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.DOS.2",
+      "name": "Transaction Rate-limiting",
+      "source": "Aws",
+      "resourceName": "Oak9SampleAPIGateway_deployment",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "aws_api_gateway_deployment.stage_description is not configured",
+          "severity": "Moderate"
+        },
+        {
+          "errorMessage": "aws_api_gateway_deployment.stage_description is not configured",
+          "severity": "Moderate"
+        },
+        {
+          "errorMessage": "aws_api_gateway_usage_plan.throttle_settings.burst_limit is not configured",
+          "severity": "Moderate"
+        },
+        {
+          "errorMessage": "aws_api_gateway_usage_plan.throttle_settings.rate_limit is not configured",
+          "severity": "Moderate"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.DOS.6",
+      "name": "Connection Limiting",
+      "source": "Aws",
+      "resourceName": "Oak9SampleAPIGateway_deployment",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "aws_api_gateway_usage_plan.quota_settings.limit is not configured",
+          "severity": "Low"
+        },
+        {
+          "errorMessage": "aws_api_gateway_usage_plan.quota_settings.period is not configured",
+          "severity": "Low"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.AA.1",
+      "name": "Logging",
+      "source": "Aws",
+      "resourceName": "web",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "e_c2__instance.instance.monitoring does not have performance monitoring configured",
+          "severity": "Moderate"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.AE.11",
+      "name": "Access Policy Enforcement",
+      "source": "Aws",
+      "resourceName": "web",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "e_c2__instance.instance.iam_instance_profile does not have IAM Profile name set",
+          "severity": "Critical"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.BR.1",
+      "name": "Design for High Availability",
+      "source": "Aws",
+      "resourceName": "web",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "e_c2__instance.instance.availability_zone is not set",
+          "severity": "Moderate"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.CM.1",
+      "name": "Hardening",
+      "source": "Aws",
+      "resourceName": "web",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "e_c2__instance.instance.image_id is not configured",
+          "severity": "Low"
+        },
+        {
+          "errorMessage": "e_c2__instance.instance.kernel_id is not configured",
+          "severity": "Low"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.IFE.26",
+      "name": "Firewalls",
+      "source": "Aws",
+      "resourceName": "web",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "e_c2__instance.instance.security_group_ids does not have the security group set",
+          "severity": "Critical"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.AI.1",
+      "name": "Asset Inventory",
+      "source": "Aws",
+      "resourceName": "default",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "e_c2__security_group.security_group.tags is not configured",
+          "severity": "Moderate"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.AI.1",
+      "name": "Asset Inventory",
+      "source": "Aws",
+      "resourceName": "elb",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "e_c2__security_group.security_group.tags is not configured",
+          "severity": "Moderate"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.IFE.17",
+      "name": "Network Isolation and Segregation",
+      "source": "Aws",
+      "resourceName": "default",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "e_c2__v_p_c.vpc.instance_tenancy is not configured",
+          "severity": "Low"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.AA.1",
+      "name": "Logging",
+      "source": "Aws",
+      "resourceName": "web",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "elastic_load_balancing.load_balancer.access_logging_policy is not configured to write load balancer access logs to S3",
+          "severity": "Low"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.AI.1",
+      "name": "Asset Inventory",
+      "source": "Aws",
+      "resourceName": "web",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "aws_elb.tags does not specify tags",
+          "severity": "Low"
+        },
+        {
+          "errorMessage": "elastic_load_balancing.load_balancer.load_balancer_name is not configured",
+          "severity": "Low"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.BR.1",
+      "name": "Design for High Availability",
+      "source": "Aws",
+      "resourceName": "web",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "aws_elb.availability_zones does not specify availability zones",
+          "severity": "Low"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.BR.2",
+      "name": "Configure Connection Draining",
+      "source": "Aws",
+      "resourceName": "web",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "elastic_load_balancing.load_balancer.connection_draining_policy does not specify a connection draining policy",
+          "severity": "Low"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.DIT.1",
+      "name": "TLS",
+      "source": "Aws",
+      "resourceName": "web",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "aws_elb.listener.instance_protocol is not configured",
+          "severity": "Low"
+        },
+        {
+          "errorMessage": "aws_elb.listener.instance_protocol is not configured",
+          "severity": "Low"
+        },
+        {
+          "errorMessage": "aws_elb.listener.ssl_certificate_id is not configured",
+          "severity": "Low"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.AE.2",
+      "name": "Session Limits",
+      "source": "Aws",
+      "resourceName": "web",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "elastic_load_balancing.load_balancer.connection_settings is not configured",
+          "severity": "Low"
+        },
+        {
+          "errorMessage": "elastic_load_balancing.load_balancer.app_cookie_stickiness_policy does not specify the application-controlled sticky session policy for the load balancer",
+          "severity": "Low"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.DOS.3",
+      "name": "Load Balancing",
+      "source": "Aws",
+      "resourceName": "web",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "elastic_load_balancing.load_balancer.listeners[0].policy_names is not configured",
+          "severity": "Low"
+        },
+        {
+          "errorMessage": "elastic_load_balancing.load_balancer.listeners[0].load_balancer_port is not configured",
+          "severity": "Low"
+        },
+        {
+          "errorMessage": "elastic_load_balancing.load_balancer.policies is not configured",
+          "severity": "Low"
+        },
+        {
+          "errorMessage": "elastic_load_balancing.load_balancer.scheme is not configured",
+          "severity": "Low"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.AE.2",
+      "name": "Session Limits",
+      "source": "Aws",
+      "resourceName": "Oak9SampleFunction",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "lambda.function.reserved_concurrent_executions is not configured",
+          "severity": "Low"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.DAR.6",
+      "name": "Application Layer Encryption",
+      "source": "Aws",
+      "resourceName": "Oak9SampleFunction",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "aws_lambda_function.kms_key_arn is not set to use customer managed keys for encryption",
+          "severity": "Low"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.IFE.13",
+      "name": "Subnet Isolation",
+      "source": "Aws",
+      "resourceName": "Oak9SampleFunction",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "lambda.function.vpc_config is not configured",
+          "severity": "Low"
+        }
+      ]
+    },
+    {
+      "id": "Oak9.Req.SS.7",
+      "name": "Shared System Resource Management",
+      "source": "Aws",
+      "resourceName": "Oak9SampleFunction",
+      "resourceType": "",
+      "guidance": "",
+      "violations": [
+        {
+          "errorMessage": "aws_lambda_function.memory_size is not configured",
+          "severity": "Moderate"
+        }
+      ]
+    }
+  ]
+}
