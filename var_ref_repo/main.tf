@@ -112,6 +112,7 @@ resource "aws_security_group" "elb" {
 }
 
 resource "aws_elb" "web" {
+  # oak9: elastic_load_balancing.load_balancer.app_cookie_stickiness_policy does not specify the application-controlled sticky session policy for the load balancer
   # oak9: elastic_load_balancing.load_balancer.connection_settings is not configured
   # oak9: aws_elb.listener.ssl_certificate_id is not configured
   # oak9: elastic_load_balancing.load_balancer.connection_draining_policy does not specify a connection draining policy
