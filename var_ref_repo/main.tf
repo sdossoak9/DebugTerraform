@@ -112,6 +112,7 @@ resource "aws_security_group" "elb" {
 }
 
 resource "aws_elb" "web" {
+  # oak9: aws_elb.availability_zones does not specify availability zones
   # oak9: aws_elb.tags does not specify tags
   # oak9: elastic_load_balancing.load_balancer.access_logging_policy is not configured to write load balancer access logs to S3
   name = "example-elb"
