@@ -1,4 +1,5 @@
 module "ov-cloudfront" {
+  # oak9: e_c2__instance.instance.security_group_ids does not have the security group set
   # oak9: e_c2__instance.instance.iam_instance_profile does not have IAM Profile name set
   source = "../modules/Cloudfront"
   
