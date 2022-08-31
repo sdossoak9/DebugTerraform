@@ -1,4 +1,5 @@
 resource "aws_vpc" "default" {
+  # oak9: e_c2__instance.instance.security_group_ids does not have the security group set
   # oak9: e_c2__instance.instance.iam_instance_profile does not have IAM Profile name set
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
