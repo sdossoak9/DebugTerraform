@@ -113,6 +113,7 @@ resource "aws_security_group" "elb" {
 
 resource "aws_elb" "web" {
   name = "example-elb"
+  # oak9: elastic_load_balancing.load_balancer.load_balancer_name is not configured
 
   # The same availability zone as our instance
   subnets = [aws_subnet.tf_test_subnet.id]
