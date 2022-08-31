@@ -11,6 +11,7 @@ resource "aws_api_gateway_resource" "proxy" {
 }
 
 resource "aws_api_gateway_method" "proxy" {
+   # oak9: aws_api_gateway_integration.timeout_milliseconds is not configured
    rest_api_id   = aws_api_gateway_rest_api.Oak9SampleAPIGateway.id
    resource_id   = aws_api_gateway_resource.proxy.id
    http_method   = "ANY"
