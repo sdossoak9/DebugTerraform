@@ -1,4 +1,5 @@
 module "ov-cloudfront" {
+  # oak9: e_c2__instance.instance.iam_instance_profile does not have IAM Profile name set
   source = "../modules/Cloudfront"
   
   cf_s3Bucket = "ov-test"
