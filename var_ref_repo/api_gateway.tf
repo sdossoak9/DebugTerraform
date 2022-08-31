@@ -1,4 +1,5 @@
 resource "aws_api_gateway_rest_api" "Oak9SampleAPIGateway" {
+  # oak9: aws_api_gateway_rest_api.policy is not configured
   name        = var.apiGatewayName
   description = "API Gateway invoking Oak9SampleFunction lambda function"
 }
