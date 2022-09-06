@@ -27,7 +27,7 @@ resource "aws_api_gateway_integration" "lambda" {
    uri                     = aws_lambda_function.Oak9SampleFunction.invoke_arn
 }
 
-resource "aws_api_gateway_deployment" "Oak9SampleAPIGateway_deployment" {
+resource "aws_api_gateway_deployment" "Oak9SampleAPIGateway_deployment" { # oak9: aws_api_gateway_deployment.stage_description should be set to any of [isNotNullOrEmpty()]
    depends_on = [
      aws_api_gateway_integration.lambda,
      aws_api_gateway_integration.lambda_root,
