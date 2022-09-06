@@ -121,7 +121,7 @@ resource "aws_elb" "web" {
 
   listener {
     instance_port     = 80
-    instance_protocol = "http"
+    instance_protocol = "http" # oak9: listener.instance_protocol should be set to any of SSL,HTTPS
     lb_port           = 80
     lb_protocol       = "http" # oak9: listener.lb_protocol should be set to any of SSL,HTTPS
   }
