@@ -41,7 +41,7 @@ resource "aws_lambda_function" "Oak9SampleFunction" {
 }
 
 
-resource "aws_lambda_permission" "apigw" {
+resource "aws_lambda_permission" "apigw" { # oak9: aws_lambda_permission.principal should be set to any of [isNotNullOrEmpty()]
    statement_id  = "AllowAPIGatewayInvoke"
    action        = "lambda:InvokeFunction"
    function_name = aws_lambda_function.Oak9SampleFunction.function_name
