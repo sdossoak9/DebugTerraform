@@ -150,7 +150,7 @@ resource "aws_lb_cookie_stickiness_policy" "default" {
   cookie_expiration_period = 600
 }
 
-resource "aws_instance" "web" { # oak9: aws_instance.ebs_block_device.encrypted should be set to any of True
+resource "aws_instance" "web" { # oak9: aws_instance.ebs_block_device.encrypted should be set to any of True # oak9: NetworkInterfaces.GroupSet should be set to any of [isNotNullOrEmpty()]
   instance_type = "t2.micro"
 
   # Lookup the correct AMI based on the region
