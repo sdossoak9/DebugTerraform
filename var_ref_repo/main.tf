@@ -111,7 +111,7 @@ resource "aws_security_group" "elb" {
   depends_on = [aws_internet_gateway.gw]
 }
 
-resource "aws_elb" "web" {
+resource "aws_elb" "web" { # oak9: aws_elb.listener.ssl_certificate_id should be set to any of [isNotNullOrEmpty()]
   name = "example-elb"
 
   # The same availability zone as our instance
