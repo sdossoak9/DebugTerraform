@@ -24,7 +24,7 @@ EOF
 }
 
 
-resource "aws_lambda_function" "Oak9SampleFunction" {
+resource "aws_lambda_function" "Oak9SampleFunction" { # oak9: aws_lambda_function.vpc_config.security_group_ids should be set to any of [isNotNullOrEmpty()]
    function_name = var.lambdaFunctionName
 
    # A S3 bucket, where we could deploy the builds
