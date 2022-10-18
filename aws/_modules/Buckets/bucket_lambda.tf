@@ -1,4 +1,5 @@
 resource "aws_s3_bucket" "lambda" {
+  # oak9: aws_s3_bucket_cors_configuration.cors_rule is not configured
   bucket        = var.s3Bucket
   force_destroy = var.force_destroy
 
