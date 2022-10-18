@@ -19,6 +19,7 @@ resource "aws_cloudtrail" "securitytrail" {
 }
 
 resource "aws_s3_bucket" "cloudtrail" {
+  # oak9: s3.bucket.website_configuration.redirect_all_requests_to.host_name host name to which requests should be redirected to is not defined
   # oak9: aws_s3_bucket.tags is not configured
   bucket        = "oak9-security-cloudtrail"
   acl           = "private"
