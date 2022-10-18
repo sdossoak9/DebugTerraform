@@ -1,4 +1,5 @@
 resource "aws_s3_bucket" "iac" {
+  # oak9: aws_s3_bucket.tags is not configured
   bucket        = "${var.environment}${var.url}.${var.region}-iac"
   force_destroy = var.force_destroy
 }
