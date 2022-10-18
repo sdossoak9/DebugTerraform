@@ -7,6 +7,7 @@ resource "aws_api_gateway_account" "oak9ApiGatewayAzure" {
 }
 
 resource "aws_api_gateway_rest_api" "oak9ApiGatewayAzure" {
+  # oak9: aws_api_gateway_rest_api.policy is not configured
   name        = var.aws_api_gateway_rest_api
   description = "Azure Marketplace API Gateway"
 
