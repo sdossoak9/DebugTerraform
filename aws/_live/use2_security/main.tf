@@ -20,7 +20,7 @@ resource "aws_cloudtrail" "securitytrail" {
 
 resource "aws_s3_bucket" "cloudtrail" {
   bucket        = "oak9-security-cloudtrail"
-  acl           = "private"
+  acl           = "private" # oak9: acl should be set to any of publicread, publicreadwrite, authenticateread
   force_destroy = true
 
   versioning {
