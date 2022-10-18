@@ -7,6 +7,7 @@ locals {
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
+  # oak9: cloud_front.distribution.distribution_config.logging is not configured
   # oak9: cloud_front.distribution.distribution_config.default_cache_behavior.realtime_log_config_arn is not configured
   origin {
     domain_name = aws_s3_bucket.console_ui_bucket.bucket_regional_domain_name
