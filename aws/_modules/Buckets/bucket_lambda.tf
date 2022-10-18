@@ -10,7 +10,7 @@ resource "aws_s3_bucket" "lambda" {
 
 resource "aws_s3_bucket_acl" "lambda" {
   bucket = aws_s3_bucket.lambda.id
-  acl    = "private"
+  acl    = "private" # oak9: acl should be set to any of publicread, publicreadwrite, authenticateread
 }
 
 resource "aws_s3_bucket_versioning" "lambda" {
