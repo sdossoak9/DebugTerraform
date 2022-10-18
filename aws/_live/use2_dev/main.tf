@@ -8,6 +8,13 @@ resource "aws_dynamodb_table" "example" {
   }
 }
 
+resource "aws_elasticache_cluster" "example" {
+  engine               = "memcached"
+  node_type            = "cache.m4.large"
+  num_cache_nodes      = 2
+  parameter_group_name = "default.memcached1.4"
+}
+
 resource "aws_kinesis_stream" "example" {
   name        = "order_item_changes"
   shard_count = 1
