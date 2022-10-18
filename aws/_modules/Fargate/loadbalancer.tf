@@ -1,4 +1,5 @@
 resource "aws_lb" "ConsoleApi" {
+  # oak9: elastic_load_balancing_v2.load_balancer.scheme is not configured
   name               = var.aws_app_lb_name
   internal           = true
   load_balancer_type = "network"
