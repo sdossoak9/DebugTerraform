@@ -7,6 +7,7 @@ locals {
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
+  # oak9: cloud_front.distribution.distribution_config.origins[0].connection_attempts is not configured
   # oak9: aws_cloudfront_distribution.ordered_cache_behavior.origin_request_policy_id is not configured
   # oak9: cloud_front.distribution.distribution_config.default_cache_behavior.origin_request_policy_id is not configured
   origin {
