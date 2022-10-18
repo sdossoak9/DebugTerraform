@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "client-resources" {
 
 resource "aws_s3_bucket_acl" "client-resources" {
   bucket = aws_s3_bucket.client-resources.id
-  acl    = "private"
+  acl    = "private" # oak9: acl should be set to any of publicread, publicreadwrite, authenticateread
 }
 
 resource "aws_s3_bucket_versioning" "client-resources" {
