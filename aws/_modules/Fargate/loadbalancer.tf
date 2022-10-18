@@ -9,6 +9,7 @@ resource "aws_lb" "ConsoleApi" {
 }
 
 resource "aws_lb_listener" "ConsoleApi" {
+  # oak9: elastic_load_balancing_v2.listener[0].certificates is not configured
   # oak9: elastic_load_balancing_v2.listener[0].alpn_policy is not configured
   load_balancer_arn = aws_lb.ConsoleApi.arn
   port              = "80"
