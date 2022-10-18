@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "azure_marketplace" {
 
 resource "aws_s3_bucket_acl" "azure_marketplace" {
   bucket = aws_s3_bucket.azure_marketplace.id
-  acl    = "private"
+  acl    = "private" # oak9: acl should be set to any of publicread, publicreadwrite, authenticateread
 }
 
 resource "aws_s3_bucket_versioning" "azure_marketplace" {
