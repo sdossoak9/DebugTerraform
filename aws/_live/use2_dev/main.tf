@@ -9,6 +9,7 @@ resource "azurerm_private_dns_zone" "example" {
 
 resource "aws_dynamodb_table" "example" {
   name     = "orders"
+  # oak9: aws_kinesis_stream.tags is not configured
   # oak9: aws_kinesis_stream.kms_key_id is not set to use the intended key
   hash_key = "id"
 
