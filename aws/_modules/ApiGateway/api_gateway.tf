@@ -16,6 +16,7 @@ resource "aws_api_gateway_rest_api" "oak9ApiGatewayLambdaAndConsole" {
 
   endpoint_configuration {
     types = ["EDGE"]
+  # oak9: API GW rest apis configured as a non-private endpoint should have an attached resource policy
   }
 }
 
