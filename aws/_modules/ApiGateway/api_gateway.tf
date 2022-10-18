@@ -20,6 +20,7 @@ resource "aws_api_gateway_rest_api" "oak9ApiGatewayLambdaAndConsole" {
 }
 
 resource "aws_api_gateway_stage" "oak9ApiGatewayLambdaAndConsole" {
+  # oak9: aws_api_gateway_stage.tags is not configured
   deployment_id = aws_api_gateway_deployment.oak9ApiGatewayLambdaAndConsole.id
   rest_api_id   = aws_api_gateway_rest_api.oak9ApiGatewayLambdaAndConsole.id
   stage_name    = var.stage_name
