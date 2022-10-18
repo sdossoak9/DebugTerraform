@@ -19,6 +19,7 @@ resource "aws_cloudtrail" "securitytrail" {
 }
 
 resource "aws_s3_bucket" "cloudtrail" {
+  # oak9: aws_s3_bucket_cors_configuration.cors_rule is not configured
   bucket        = "oak9-security-cloudtrail"
   acl           = "private"
   force_destroy = true
