@@ -25,7 +25,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "lambda" {
 
   rule {
     apply_server_side_encryption_by_default {
-      sse_algorithm = "AES256"
+      sse_algorithm = "AES256" # oak9: rule.apply_server_side_encryption_by_default.sse_algorithm should be set to any of aws:kms
     }
   }
 }
