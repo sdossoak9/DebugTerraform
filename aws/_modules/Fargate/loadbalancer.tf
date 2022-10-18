@@ -20,6 +20,7 @@ resource "aws_lb_listener" "ConsoleApi" {
 }
 
 resource "aws_lb_target_group" "ConsoleApi" {
+  # oak9: aws_alb_target_group.tags does not specify tags
   # oak9: aws_lb_target_group.health_check.enabled is not configured
   name        = "ConsoleApi"
   port        = 80
