@@ -88,6 +88,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   viewer_certificate {
     acm_certificate_arn            = var.acm_certificate_arn
     ssl_support_method             = var.acm_certificate_arn == "" ? "" : "sni-only"
+    # oak9: aws_cloudfront_distribution.viewer_certificate.ssl_support_method is not configured
     minimum_protocol_version       = var.minimum_protocol_version
     cloudfront_default_certificate = var.acm_certificate_arn == "" ? true : false
   }
