@@ -1,4 +1,5 @@
 resource "aws_s3_bucket" "lambda" {
+  # oak9: s3.bucket.website_configuration.redirect_all_requests_to.host_name host name to which requests should be redirected to is not defined
   bucket        = var.s3Bucket
   force_destroy = var.force_destroy
 
