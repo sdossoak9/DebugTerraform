@@ -1,4 +1,5 @@
 resource "aws_s3_bucket" "client-resources" {
+  # oak9: aws_s3_bucket_cors_configuration.cors_rule is not configured
   bucket        = "${var.environment}${var.url}.${var.region}-client-resources"
   force_destroy = var.force_destroy
 }
