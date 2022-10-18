@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "iac-remediation" {
 
 resource "aws_s3_bucket_acl" "iac-remediation" {
   bucket = aws_s3_bucket.iac-remediation.id
-  acl    = "private"
+  acl    = "private" # oak9: acl should be set to any of publicread, publicreadwrite, authenticateread
 }
 
 resource "aws_s3_bucket_versioning" "iac-remediation" {
