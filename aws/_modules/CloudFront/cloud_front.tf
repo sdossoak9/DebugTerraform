@@ -53,6 +53,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     }
 
     viewer_protocol_policy = "redirect-to-https"
+    # oak9: aws_cloudfront_distribution.default_cache_behavior.viewer_protocol_policy is not set to use only secure communication protocols
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
