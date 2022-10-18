@@ -9,6 +9,7 @@ locals {
 
 
 resource "aws_cloudtrail" "securitytrail" {
+  # oak9: aws_cloudtrail.enable_logging is not set to 
   cloud_watch_logs_role_arn  = aws_iam_role.cloudtrail_cloudwatch_events_role.arn
   cloud_watch_logs_group_arn = "${aws_cloudwatch_log_group.cwl_loggroup.arn}:*"
   name                          = "oak9-management-events"
