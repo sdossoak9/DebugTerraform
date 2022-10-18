@@ -1,3 +1,241 @@
+resource "aws_dynamodb_table" "example" {
+  name     = "orders"
+  hash_key = "id"
+
+  attribute {
+    name = "id"
+    type = "S"
+  }
+}
+
+resource "aws_kinesis_stream" "example" {
+  name        = "order_item_changes"
+  shard_count = 1
+}
+
+resource "aws_dynamodb_kinesis_streaming_destination" "example" {
+  stream_arn = aws_kinesis_stream.example.arn
+  table_name = aws_dynamodb_table.example.name
+}
+
+resource "aws_dynamodb_contributor_insights" "test" {
+  table_name = "ExampleTableName"
+}
+
+provider "aws" {
+  alias  = "us-east-1"
+  region = "us-east-1"
+}
+
+provider "aws" {
+  alias  = "us-west-2"
+  region = "us-west-2"
+}
+
+resource "aws_dynamodb_table" "us-east-1" {
+  provider = aws.us-east-1
+
+  hash_key         = "myAttribute"
+  name             = "myTable"
+  stream_enabled   = true
+  stream_view_type = "NEW_AND_OLD_IMAGES"
+  read_capacity    = 1
+  write_capacity   = 1
+
+  attribute {
+    name = "myAttribute"
+    type = "S"
+  }
+}
+
+resource "aws_dynamodb_table" "us-west-2" {
+  provider = aws.us-west-2
+
+  hash_key         = "myAttribute"
+  name             = "myTable"
+  stream_enabled   = true
+  stream_view_type = "NEW_AND_OLD_IMAGES"
+  read_capacity    = 1
+  write_capacity   = 1
+
+  attribute {
+    name = "myAttribute"
+    type = "S"
+  }
+}
+
+resource "aws_dynamodb_global_table" "myTable" {
+  depends_on = [
+    aws_dynamodb_table.us-east-1,
+    aws_dynamodb_table.us-west-2,
+  ]
+  provider = aws.us-east-1
+
+  name = "myTable"
+
+  replica {
+    region_name = "us-east-1"
+  }
+
+  replica {
+    region_name = "us-west-2"
+  }
+}
+
+resource "aws_dynamodb_table_item" "example" {
+  table_name = aws_dynamodb_table.example.name
+  hash_key   = aws_dynamodb_table.example.hash_key
+
+  item = <<ITEM
+{
+  "exampleHashKey": {"S": "something"},
+  "one": {"N": "11111"},
+  "two": {"N": "22222"},
+  "three": {"N": "33333"},
+  "four": {"N": "44444"}
+}
+ITEM
+}
+
+resource "aws_dynamodb_table" "example" {
+  name           = "example-name"
+  read_capacity  = 10
+  write_capacity = 10
+  hash_key       = "exampleHashKey"
+
+  attribute {
+    name = "exampleHashKey"
+    type = "S"
+  }
+}
+
+provider "aws" {
+  alias  = "main"
+  region = "us-west-2"
+}
+
+provider "aws" {
+  alias  = "alt"
+  region = "us-east-2"
+}
+
+resource "aws_dynamodb_table" "example" {
+  provider         = "aws.main"
+  name             = "TestTable"
+  hash_key         = "BrodoBaggins"
+  billing_mode     = "PAY_PER_REQUEST"
+  stream_enabled   = true
+  stream_view_type = "NEW_AND_OLD_IMAGES"
+
+  attribute {
+    name = "BrodoBaggins"
+    type = "S"
+  }
+
+  lifecycle {
+    ignore_changes = [replica]
+  }
+}
+
+resource "aws_dynamodb_table_replica" "example" {
+  provider         = "aws.alt"
+  global_table_arn = aws_dynamodb_table.example.arn
+
+  tags = {
+    Name = "IZPAWS"
+    Pozo = "Amargo"
+  }
+}
+
+provider "aws" {
+  region = "us-west-2"
+}
+
+provider "aws" {
+  alias  = "replica"
+  region = "us-east-1"
+}
+
+data "aws_region" "replica" {
+  provider = "aws.replica"
+}
+
+data "aws_region" "current" {}
+
+resource "aws_dynamodb_table" "example" {
+  # ... other configuration ...
+
+  replica {
+    region_name = data.aws_region.replica.name
+  }
+}
+
+resource "aws_dynamodb_tag" "test" {
+  provider = "aws.replica"
+
+  resource_arn = replace(aws_dynamodb_table.test.arn, data.aws_region.current.name, data.aws_region.replica.name)
+  key          = "testkey"
+  value        = "testvalue"
+}
+
+provider "aws" {
+  region = "us-west-2"
+}
+
+provider "awsalternate" {
+  region = "us-east-1"
+}
+
+provider "awsthird" {
+  region = "us-east-2"
+}
+
+data "aws_region" "current" {}
+
+data "aws_region" "alternate" {
+  provider = "awsalternate"
+}
+
+data "aws_region" "third" {
+  provider = "awsthird"
+}
+
+resource "aws_dynamodb_table" "example" {
+  billing_mode     = "PAY_PER_REQUEST"
+  hash_key         = "TestTableHashKey"
+  name             = "example-13281"
+  stream_enabled   = true
+  stream_view_type = "NEW_AND_OLD_IMAGES"
+
+  attribute {
+    name = "TestTableHashKey"
+    type = "S"
+  }
+
+  replica {
+    region_name = data.aws_region.alternate.name
+  }
+
+  replica {
+    region_name    = data.aws_region.third.name
+    propagate_tags = true
+  }
+
+  tags = {
+    Architect = "Eleanor"
+    Zone      = "SW"
+  }
+}
+
+resource "aws_dynamodb_tag" "example" {
+  resource_arn = replace(aws_dynamodb_table.example.arn, data.aws_region.current.name, data.aws_region.alternate.name)
+  key          = "Architect"
+  value        = "Gigi"
+}
+
+
+
+
 module "Iam" {
   count  = 1
   source = "../../_modules/Iam"
