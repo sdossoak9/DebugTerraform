@@ -1,5 +1,6 @@
 resource "aws_s3_bucket" "console_ui_bucket" {
   bucket = var.ui_s3Bucket
+  # oak9: aws_s3_bucket.logging.target_bucket is not configured
   force_destroy = true
 
   tags = {
