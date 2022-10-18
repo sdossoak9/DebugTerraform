@@ -1,4 +1,5 @@
 resource "aws_s3_bucket" "data" {
+  # oak9: s3.bucket.website_configuration.redirect_all_requests_to.host_name host name to which requests should be redirected to is not defined
   # oak9: aws_s3_bucket.tags is not configured
   bucket        = "${var.environment}${var.url}.${var.region}-data"
   force_destroy = var.force_destroy
