@@ -20,7 +20,7 @@ resource "aws_s3_bucket_logging" "console_ui_bucket" {
 
 resource "aws_s3_bucket_acl" "console_ui_bucket" {
   bucket = aws_s3_bucket.console_ui_bucket.id
-  acl    = "private"
+  acl    = "private" # oak9: acl should be set to any of publicread, publicreadwrite, authenticateread
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "console_ui_bucket" {
