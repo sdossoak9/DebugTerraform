@@ -20,6 +20,7 @@ resource "aws_lb_listener" "ConsoleApi" {
 }
 
 resource "aws_lb_target_group" "ConsoleApi" {
+  # oak9: aws_lb_target_group_attachment.availability_zone does not specify availability zones
   name        = "ConsoleApi"
   port        = 80
   protocol    = "TCP"
