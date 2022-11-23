@@ -12,6 +12,7 @@ resource "aws_lb_listener" "ConsoleApi" {
   load_balancer_arn = aws_lb.ConsoleApi.arn
   port              = "80"
   protocol          = "TCP"
+  # oak9: aws_alb_listener.protocol is not configured
 
   default_action {
     type             = "forward"
