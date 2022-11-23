@@ -23,6 +23,7 @@ resource "aws_lb_target_group" "ConsoleApi" {
   name        = "ConsoleApi"
   port        = 80
   protocol    = "TCP"
+  # oak9: aws_lb_target_group.health_check.protocol is not configured
   # oak9: aws_alb_target_group.protocol is not configured
   target_type = "ip"
   vpc_id      = aws_vpc.oak9-vpc.id
