@@ -7,6 +7,7 @@ locals {
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
+  # oak9: aws_cloudfront_distribution.origin.connection_timeout is not configured
   # oak9: cloud_front.distribution.distribution_config.origins[0].origin_custom_headers is not configured
   # oak9: cloud_front.distribution.distribution_config.logging is not configured
   # oak9: aws_cloudfront_distribution.default_cache_behavior.realtime_log_config_arn is not configured
