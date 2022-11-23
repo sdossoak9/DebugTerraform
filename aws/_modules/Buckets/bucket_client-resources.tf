@@ -1,5 +1,7 @@
 resource "aws_s3_bucket" "client-resources" {
+  # oak9: s3.bucket.lifecycle_configuration.rules is not configured
   bucket        = "${var.environment}${var.url}.${var.region}-client-resources"
+  # oak9: aws_s3_bucket.logging.target_bucket is not configured
   force_destroy = var.force_destroy
 }
 

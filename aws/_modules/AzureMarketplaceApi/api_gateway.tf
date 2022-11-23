@@ -7,11 +7,14 @@ resource "aws_api_gateway_account" "oak9ApiGatewayAzure" {
 }
 
 resource "aws_api_gateway_rest_api" "oak9ApiGatewayAzure" {
+  # oak9: aws_api_gateway_rest_api.tags is not configured
+  # oak9: aws_api_gateway_rest_api.policy is not configured
   name        = var.aws_api_gateway_rest_api
   description = "Azure Marketplace API Gateway"
 
   endpoint_configuration {
     types = ["EDGE"]
+  # oak9: aws_api_gateway_rest_api.endpoint_configuration.types has an edge optimised configuration for the API
   }
 }
 
@@ -67,6 +70,7 @@ resource "aws_api_gateway_integration" "activate_subscription" {
 }
 
 resource "aws_api_gateway_method" "activate_subscription_cors" {
+  # oak9: aws_api_gateway_integration.timeout_milliseconds is not configured
   rest_api_id   = aws_api_gateway_rest_api.oak9ApiGatewayAzure.id
   resource_id   = aws_api_gateway_resource.activate_subscription.id
   http_method   = "OPTIONS"

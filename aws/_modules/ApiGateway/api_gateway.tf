@@ -7,6 +7,8 @@ resource "aws_api_gateway_account" "oak9ApiGatewayLambdaAndConsole" {
 }
 
 resource "aws_api_gateway_rest_api" "oak9ApiGatewayLambdaAndConsole" {
+  # oak9: aws_api_gateway_rest_api.tags is not configured
+  # oak9: aws_api_gateway_rest_api.policy is not configured
   name        = var.aws_api_gateway_rest_api
   description = "API Gateway invoking consoleApi & lambda function"
 
@@ -16,16 +18,21 @@ resource "aws_api_gateway_rest_api" "oak9ApiGatewayLambdaAndConsole" {
 
   endpoint_configuration {
     types = ["EDGE"]
+  # oak9: aws_api_gateway_rest_api.endpoint_configuration.types has an edge optimised configuration for the API
   }
 }
 
 resource "aws_api_gateway_stage" "oak9ApiGatewayLambdaAndConsole" {
+  # oak9: aws_api_gateway_stage.tags is not configured
+  # oak9: aws_api_gateway_stage.access_log_settings is not configured
   deployment_id = aws_api_gateway_deployment.oak9ApiGatewayLambdaAndConsole.id
   rest_api_id   = aws_api_gateway_rest_api.oak9ApiGatewayLambdaAndConsole.id
   stage_name    = var.stage_name
 }
 
 resource "aws_api_gateway_deployment" "oak9ApiGatewayLambdaAndConsole" {
+  # oak9: aws_api_gateway_deployment.stage_description is not configured
+  # oak9: api_gateway.deployment.stage_description.access_log_setting is not configured
   rest_api_id = aws_api_gateway_rest_api.oak9ApiGatewayLambdaAndConsole.id
 
   depends_on = [
@@ -66,6 +73,7 @@ resource "aws_api_gateway_method_settings" "oak9GatewayStageLogging" {
 }
 
 resource "aws_api_gateway_domain_name" "customdomain" {
+  # oak9: aws_api_gateway_domain_name.tags is not configured
   certificate_arn = var.acm_certificate_arn
   domain_name     = (var.stack == "prod" ? "api.${var.dns_name}": "${var.stack}api.${var.dns_name}")
   security_policy = "TLS_1_2"

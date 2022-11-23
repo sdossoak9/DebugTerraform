@@ -19,7 +19,9 @@ resource "aws_cloudtrail" "securitytrail" {
 }
 
 resource "aws_s3_bucket" "cloudtrail" {
+  # oak9: s3.bucket.lifecycle_configuration.rules is not configured
   bucket        = "oak9-security-cloudtrail"
+  # oak9: aws_s3_bucket.logging.target_bucket is not configured
   acl           = "private"
   force_destroy = true
 
