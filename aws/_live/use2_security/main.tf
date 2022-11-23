@@ -9,6 +9,7 @@ locals {
 
 
 resource "aws_cloudtrail" "securitytrail" {
+  # oak9: aws_cloudtrail.kms_key_id is not set for encrypted CloudTrail logs
   cloud_watch_logs_role_arn  = aws_iam_role.cloudtrail_cloudwatch_events_role.arn
   cloud_watch_logs_group_arn = "${aws_cloudwatch_log_group.cwl_loggroup.arn}:*"
   name                          = "oak9-management-events"
@@ -30,7 +31,7 @@ resource "aws_s3_bucket" "cloudtrail" {
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
+        sse_algorithm = "AES256" # oak9: server_side_encryption_configuration.rule.apply_server_side_encryption_by_default.sse_algorithm should be set to any of aws:kms
       }
     }
   }
