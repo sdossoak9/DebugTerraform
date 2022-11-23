@@ -76,6 +76,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   restrictions {
     geo_restriction {
       restriction_type = "blacklist"
+      # oak9: aws_cloudfront_distribution.restrictions.geo_restriction.restriction_type is not configured
       locations        = ["CN","TW","RU","KR"]
     }
   }
