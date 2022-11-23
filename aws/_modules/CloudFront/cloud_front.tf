@@ -7,6 +7,7 @@ locals {
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
+  # oak9: aws_cloudfront_distribution.default_cache_behavior.trusted_signers is not configured
   origin {
     domain_name = aws_s3_bucket.console_ui_bucket.bucket_regional_domain_name
     origin_id   = local.s3_origin_id
