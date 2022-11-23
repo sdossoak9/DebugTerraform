@@ -66,6 +66,7 @@ resource "aws_api_gateway_method_settings" "oak9GatewayStageLogging" {
 }
 
 resource "aws_api_gateway_domain_name" "customdomain" {
+  # oak9: aws_api_gateway_domain_name.mutual_tls_authentication is not configured
   certificate_arn = var.acm_certificate_arn
   domain_name     = (var.stack == "prod" ? "api.${var.dns_name}": "${var.stack}api.${var.dns_name}")
   security_policy = "TLS_1_2"
