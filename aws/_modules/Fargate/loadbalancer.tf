@@ -1,4 +1,5 @@
 resource "aws_lb" "ConsoleApi" {
+  # oak9: aws_lb.tags does not specify tags
   name               = var.aws_app_lb_name
   internal           = true
   load_balancer_type = "network"
