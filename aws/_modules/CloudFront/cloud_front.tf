@@ -7,6 +7,10 @@ locals {
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
+  # oak9: aws_cloudfront_distribution.origin.connection_timeout is not configured
+  # oak9: cloud_front.distribution.distribution_config.origins[0].origin_custom_headers is not configured
+  # oak9: cloud_front.distribution.distribution_config.logging is not configured
+  # oak9: aws_cloudfront_distribution.default_cache_behavior.realtime_log_config_arn is not configured
   origin {
     domain_name = aws_s3_bucket.console_ui_bucket.bucket_regional_domain_name
     origin_id   = local.s3_origin_id
@@ -35,7 +39,9 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    # oak9: aws_cloudfront_distribution.default_cache_behavior.allowed_methods are not configured to allow only minimum necessary HTTP methods
     cached_methods   = ["GET", "HEAD"]
+    # oak9: aws_cloudfront_distribution.default_cache_behavior.cached_methods is not configured
     target_origin_id = local.s3_origin_id
 
     forwarded_values {

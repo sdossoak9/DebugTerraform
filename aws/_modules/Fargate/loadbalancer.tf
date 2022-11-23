@@ -1,4 +1,5 @@
 resource "aws_lb" "ConsoleApi" {
+  # oak9: aws_lb.tags does not specify tags
   name               = var.aws_app_lb_name
   internal           = true
   load_balancer_type = "network"
@@ -9,6 +10,20 @@ resource "aws_lb" "ConsoleApi" {
 }
 
 resource "aws_lb_listener" "ConsoleApi" {
+  # oak9: aws_lb_listener.default_action.authenticate_oidc.user_info_endpoint is not configured
+  # oak9: aws_lb_listener.default_action.authenticate_oidc.token_endpoint is not configured
+  # oak9: aws_lb_listener.default_action.authenticate_oidc.issuer is not configured
+  # oak9: aws_lb_listener.default_action.authenticate_oidc.client_secret is not configured
+  # oak9: aws_lb_listener.default_action.authenticate_oidc.authorization_endpoint is not configured
+  # oak9: aws_lb_listener.default_action.authenticate_cognito.user_pool_domain is not configured
+  # oak9: aws_lb_listener.default_action.authenticate_cognito.session_timeout is not configured
+  # oak9: aws_lb_listener.default_action.authenticate_cognito.session_cookie_name is not configured
+  # oak9: aws_lb_listener.default_action.authenticate_cognito.on_unauthenticated_request is not configured
+  # oak9: aws_lb_listener.default_action.authenticate_oidc.client_id is not configured
+  # oak9: aws_lb_listener.default_action.authenticate_cognito.user_pool_client_id is not configured
+  # oak9: elastic_load_balancing_v2.listener[0].certificates is not configured
+  # oak9: aws_lb_listener.default_action.authenticate_cognito.authentication_request_extra_params is not configured
+  # oak9: aws_lb_listener.alpn_policy is not configured
   load_balancer_arn = aws_lb.ConsoleApi.arn
   port              = "80"
   protocol          = "TCP"
@@ -20,8 +35,11 @@ resource "aws_lb_listener" "ConsoleApi" {
 }
 
 resource "aws_lb_target_group" "ConsoleApi" {
+  # oak9: aws_alb_target_group.tags does not specify tags
+  # oak9: aws_lb_target_group.health_check.enabled is not configured
   name        = "ConsoleApi"
   port        = 80
+  # oak9: aws_alb_target_group.port is not configured
   protocol    = "TCP"
   target_type = "ip"
   vpc_id      = aws_vpc.oak9-vpc.id

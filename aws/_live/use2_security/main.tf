@@ -9,6 +9,7 @@ locals {
 
 
 resource "aws_cloudtrail" "securitytrail" {
+  # oak9: aws_cloudtrail.tags is not configured
   cloud_watch_logs_role_arn  = aws_iam_role.cloudtrail_cloudwatch_events_role.arn
   cloud_watch_logs_group_arn = "${aws_cloudwatch_log_group.cwl_loggroup.arn}:*"
   name                          = "oak9-management-events"
@@ -19,6 +20,7 @@ resource "aws_cloudtrail" "securitytrail" {
 }
 
 resource "aws_s3_bucket" "cloudtrail" {
+  # oak9: aws_s3_bucket.tags is not configured
   bucket        = "oak9-security-cloudtrail"
   acl           = "private"
   force_destroy = true
