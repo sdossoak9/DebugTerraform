@@ -25,6 +25,7 @@ resource "aws_elasticache_cluster" "example" {
 }
 
 resource "aws_kinesis_stream" "example" {
+  # oak9: aws_kinesis_stream.tags are not defined
   name        = "order_item_changes"
   shard_count = 1
 }
