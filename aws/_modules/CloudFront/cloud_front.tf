@@ -7,6 +7,7 @@ locals {
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
+  # oak9: aws_cloudfront_distribution.default_cache_behavior.field_level_encryption_id is not configured
   # oak9: aws_cloudfront_distribution.origin.connection_attempts is not configured
   # oak9: aws_cloudfront_distribution.ordered_cache_behavior.origin_request_policy_id is not configured
   # oak9: aws_cloudfront_distribution.default_cache_behavior.origin_request_policy_id is not configured
