@@ -9,6 +9,7 @@ resource "aws_lb" "ConsoleApi" {
 }
 
 resource "aws_lb_listener" "ConsoleApi" {
+  # oak9: aws_lb_listener.default_action.authenticate_cognito.authentication_request_extra_params is not configured
   # oak9: aws_lb_listener.alpn_policy is not configured
   load_balancer_arn = aws_lb.ConsoleApi.arn
   port              = "80"
