@@ -7,6 +7,8 @@ locals {
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
+  # oak9: aws_cloudfront_distribution.web_acl_id is not configured
+  # oak9: aws_cloudfront_distribution.default_cache_behavior.trusted_signers is not configured
   origin {
     domain_name = aws_s3_bucket.console_ui_bucket.bucket_regional_domain_name
     origin_id   = local.s3_origin_id
@@ -88,6 +90,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   viewer_certificate {
     acm_certificate_arn            = var.acm_certificate_arn
     ssl_support_method             = var.acm_certificate_arn == "" ? "" : "sni-only"
+    # oak9: aws_cloudfront_distribution.viewer_certificate.ssl_support_method is not configured
     minimum_protocol_version       = var.minimum_protocol_version
     cloudfront_default_certificate = var.acm_certificate_arn == "" ? true : false
   }

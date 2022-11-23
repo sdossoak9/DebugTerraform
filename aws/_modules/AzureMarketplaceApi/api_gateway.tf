@@ -12,6 +12,7 @@ resource "aws_api_gateway_rest_api" "oak9ApiGatewayAzure" {
 
   endpoint_configuration {
     types = ["EDGE"]
+  # oak9: API GW rest apis configured as a non-private endpoint should have an attached resource policy
   }
 }
 
@@ -70,7 +71,7 @@ resource "aws_api_gateway_method" "activate_subscription_cors" {
   rest_api_id   = aws_api_gateway_rest_api.oak9ApiGatewayAzure.id
   resource_id   = aws_api_gateway_resource.activate_subscription.id
   http_method   = "OPTIONS"
-  authorization = "NONE"
+  authorization = "NONE" # oak9: authorization should be set to any of aws_iam, custom, cognito_user_pools, none
 }
 
 resource "aws_api_gateway_method_response" "activate_subscription_cors" {
