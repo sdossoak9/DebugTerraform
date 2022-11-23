@@ -35,6 +35,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    # oak9: aws_cloudfront_distribution.default_cache_behavior.allowed_methods are not configured to allow only minimum necessary HTTP methods
     cached_methods   = ["GET", "HEAD"]
     # oak9: aws_cloudfront_distribution.default_cache_behavior.cached_methods is not configured
     target_origin_id = local.s3_origin_id
