@@ -9,6 +9,7 @@ resource "aws_lb" "ConsoleApi" {
 }
 
 resource "aws_lb_listener" "ConsoleApi" {
+  # oak9: aws_lb_listener.default_action.authenticate_oidc.user_info_endpoint is not configured
   # oak9: aws_lb_listener.default_action.authenticate_oidc.token_endpoint is not configured
   # oak9: aws_lb_listener.default_action.authenticate_oidc.issuer is not configured
   # oak9: aws_lb_listener.default_action.authenticate_oidc.client_secret is not configured
